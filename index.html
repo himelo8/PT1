@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome Here</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #1a2a6c);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            color: #fff;
+            overflow: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+            width: 100%;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .logo i {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(106, 17, 203, 0.7); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 20px rgba(106, 17, 203, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(106, 17, 203, 0); }
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 3rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #ffffff, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+
+        .typing-container {
+            position: relative;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 2.5rem 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+            text-align: center;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            letter-spacing: 1px;
+            max-width: 90%;
+            min-width: 300px;
+            margin: 0 auto;
+            overflow: hidden;
+            transform: translateZ(0);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .typing-container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #6a11cb, #2575fc, #ff0080, #ff8c00);
+            z-index: -1;
+            border-radius: 22px;
+            animation: borderAnimation 3s linear infinite;
+            background-size: 400%;
+        }
+
+        @keyframes borderAnimation {
+            0% { background-position: 0 0; }
+            50% { background-position: 400% 0; }
+            100% { background-position: 0 0; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .text {
+            display: inline-block;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 4px;
+            height: 1.2em;
+            background: #fff;
+            margin-left: 5px;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50%, 100% { opacity: 1; }
+            25%, 75% { opacity: 0; }
+        }
+
+        .language-indicator {
+            margin-top: 1.5rem;
+            font-size: 1rem;
+            opacity: 0.8;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+
+        .floating-element:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 5%;
+            animation: float 15s infinite ease-in-out;
+            animation-delay: 0s;
+        }
+
+        .floating-element:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 70%;
+            left: 85%;
+            animation: float 18s infinite ease-in-out;
+            animation-delay: -2s;
+        }
+
+        .floating-element:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 40%;
+            left: 80%;
+            animation: float 12s infinite ease-in-out;
+            animation-delay: -4s;
+        }
+
+        .floating-element:nth-child(4) {
+            width: 120px;
+            height: 120px;
+            top: 20%;
+            left: 85%;
+            animation: float 20s infinite ease-in-out;
+            animation-delay: -6s;
+        }
+
+        .floating-element:nth-child(5) {
+            width: 70px;
+            height: 70px;
+            top: 80%;
+            left: 10%;
+            animation: float 14s infinite ease-in-out;
+            animation-delay: -8s;
+        }
+
+        /* Particles */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .typing-container {
+                padding: 1.5rem 2rem;
+                font-size: clamp(1.5rem, 5vw, 2.5rem);
+            }
+            
+            h1 {
+                font-size: clamp(2rem, 5vw, 3rem);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    <div class="floating-element"></div>
+    
+    <!-- Particle canvas -->
+    <canvas id="particles"></canvas>
+    
+    <!-- Main content -->
+    <div class="container">
+        <div class="logo">
+            <i class="fas fa-globe-americas"></i>
+        </div>
+        
+        <h1>Welcome Here</h1>
+        
+        <div class="typing-container">
+            <span class="text" id="typing"></span><span class="cursor"></span>
+        </div>
+        
+        <div class="language-indicator" id="language-indicator">English</div>
+    </div>
+
+    <script>
+        // --- Particle background ---
+        const canvas = document.getElementById('particles');
+        const ctx = canvas.getContext('2d');
+        let w = canvas.width = window.innerWidth;
+        let h = canvas.height = window.innerHeight;
+
+        const particles = [];
+        const particleCount = 150;
+
+        class Particle {
+            constructor(){
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.r = Math.random() * 3 + 1;
+                this.dx = (Math.random() - 0.5) * 1.5;
+                this.dy = (Math.random() - 0.5) * 1.5;
+                this.color = `rgba(255, 255, 255, ${Math.random() * 0.4 + 0.1})`;
+                this.originalSize = this.r;
+                this.sizeVariation = Math.random() * 2;
+                this.speed = Math.random() * 0.5 + 0.5;
+            }
+            
+            draw(){
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+            
+            update(){
+                this.x += this.dx * this.speed;
+                this.y += this.dy * this.speed;
+                
+                // Boundary check with bounce
+                if(this.x < 0 || this.x > w) this.dx *= -1;
+                if(this.y < 0 || this.y > h) this.dy *= -1;
+                
+                // Size pulsation
+                this.r = this.originalSize + Math.sin(Date.now() * 0.001) * this.sizeVariation;
+                
+                this.draw();
+            }
+        }
+
+        for(let i = 0; i < particleCount; i++){
+            particles.push(new Particle());
+        }
+
+        function animate(){
+            ctx.clearRect(0, 0, w, h);
+            
+            // Draw connections between close particles
+            for(let i = 0; i < particles.length; i++){
+                for(let j = i + 1; j < particles.length; j++){
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if(distance < 100){
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 255, 255, ${0.2 * (1 - distance/100)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            
+            particles.forEach(p => p.update());
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        });
+
+        // --- Typing multi-language effect ---
+        const messages = [
+            { text: "Welcome Here", lang: "English" },
+            { text: "Bienvenido Aquí", lang: "Spanish" },
+            { text: "Bienvenue Ici", lang: "French" },
+            { text: "Willkommen Hier", lang: "German" },
+            { text: "Benvenuto Qui", lang: "Italian" },
+            { text: "ようこそこちらへ", lang: "Japanese" },
+            { text: "환영합니다", lang: "Korean" },
+            { text: "مرحباً هنا", lang: "Arabic" },
+            { text: "स्वागत हे यहाँ", lang: "Hindi" },
+            { text: "Bem-vindo Aqui", lang: "Portuguese" },
+            { text: "Welkom Hier", lang: "Dutch" },
+            { text: "Добро пожаловать сюда", lang: "Russian" },
+            { text: "Hoş Geldiniz Buraya", lang: "Turkish" },
+            { text: "Καλώς Ήρθατε Εδώ", lang: "Greek" },
+            { text: "ברוך הבא לכאן", lang: "Hebrew" },
+            { text: "Välkommen Hit", lang: "Swedish" },
+            { text: "Velkommen Her", lang: "Danish" },
+            { text: "Tervetuloa Tänne", lang: "Finnish" },
+            { text: "Velkommen Her", lang: "Norwegian" },
+            { text: "Witamy Tutaj", lang: "Polish" },
+            { text: "Vítejte Zde", lang: "Czech" },
+            { text: "Üdvözöljük Itt", lang: "Hungarian" },
+            { text: "Vitajte Tu", lang: "Slovak" },
+            { text: "Bine Ați Venit Aici", lang: "Romanian" },
+            { text: "Добре Дошли Тук", lang: "Bulgarian" },
+            { text: "Dobrodošli Ovdje", lang: "Croatian" },
+            { text: "Vítejte Zde", lang: "Czech" },
+            { text: "Velkommen Her", lang: "Danish" },
+            { text: "Welkom Hier", lang: "Dutch" },
+            { text: "Tere Tulemast Siia", lang: "Estonian" },
+            { text: "Tervetuloa Tänne", lang: "Finnish" },
+            { text: "Bienvenue Ici", lang: "French" },
+            { text: "Willkommen Hier", lang: "German" },
+            { text: "Καλώς Ήρθατε Εδώ", lang: "Greek" },
+            { text: "Vítajte Tu", lang: "Slovak" },
+            { text: "Bienvenido Aquí", lang: "Spanish" }
+        ];
+
+        const typingEl = document.getElementById('typing');
+        const languageIndicator = document.getElementById('language-indicator');
+        let msgIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+        let pauseTime = 1500;
+
+        function type(){
+            const message = messages[msgIndex];
+            
+            if(!isDeleting){
+                // Typing
+                typingEl.textContent = message.text.substring(0, charIndex);
+                charIndex++;
+                typingSpeed = 100;
+                
+                if(charIndex <= message.text.length){
+                    setTimeout(type, typingSpeed);
+                } else {
+                    // Pause at end of message
+                    isDeleting = true;
+                    languageIndicator.textContent = message.lang;
+                    setTimeout(type, pauseTime);
+                }
+            } else {
+                // Deleting
+                typingEl.textContent = message.text.substring(0, charIndex);
+                charIndex--;
+                typingSpeed = 50;
+                
+                if(charIndex > 0){
+                    setTimeout(type, typingSpeed);
+                } else {
+                    // Move to next message
+                    isDeleting = false;
+                    msgIndex = (msgIndex + 1) % messages.length;
+                    languageIndicator.textContent = messages[msgIndex].lang;
+                    setTimeout(type, 500);
+                }
+            }
+        }
+
+        // Start typing effect
+        setTimeout(type, 1000);
+    </script>
+</body>
+</html>
